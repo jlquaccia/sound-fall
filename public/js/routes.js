@@ -12,6 +12,17 @@ angular
         url: '/',
         controller: 'HomeCtrl as home',
         templateUrl: '/views/home.html'
+      })
+      // auth
+      .state('login', {
+        url: '/login',
+        controller: 'AuthCtrl as auth',
+        templateUrl: 'views/auth/login.html'
+      })
+      .state('register', {
+        url: '/register',
+        controller: 'AuthCtrl as auth',
+        templateUrl: 'views/auth/register.html'
       });
 
     $urlRouterProvider
