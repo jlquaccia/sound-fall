@@ -1,0 +1,25 @@
+{
+  "name": "sound_drop",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Jason Quaccia <jlquaccia@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "animate.css": "^3.5.2",
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.3"
+  }
+}
