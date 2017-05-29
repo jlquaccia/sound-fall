@@ -27,7 +27,7 @@
             .then(
               function (response) {
                 var user = response.data;
-
+                console.log(user);
                 if (user !== null) {
                   $rootScope.currentUser = user;
                   // success flash message
@@ -76,6 +76,7 @@
                 $state.go('home');
               },
               function (err) {
+                console.log(err);
                 $scope.errorMessage = err;
               }
             );

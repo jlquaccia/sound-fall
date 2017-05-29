@@ -6,6 +6,8 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var session = require('express-session');
 
 var app = express();
 
@@ -18,6 +20,13 @@ mongoose.connect(process.env.MONGODB_URI || db);
 app.use(bodyParser.json());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(session({
+  secret: 'this is a secret',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(sassMiddleware({
   src: __dirname + '/sass',
