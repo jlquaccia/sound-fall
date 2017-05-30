@@ -1,0 +1,32 @@
+<div id="navbar">
+  <header id="header" role="banner">
+    <div class="header-inner">
+      <div id="siteTitleWrapper">
+        <h1 id="siteTitle" class="site-title">
+          <a href="#">Sound Fall</a>
+        </h1>
+      </div>
+      <div id="headerNav">
+        <div id="mainNavWrapper" class="nav-wrapper">
+          <nav id="mainNavigation">
+            <div class="active">
+              <a ui-sref="home">Home</a>
+            </div>
+            <div ng-hide="currentUser">
+              <a ui-sref="login">Login</a>
+            </div>
+            <div ng-hide="currentUser">
+              <a ui-sref="register">Register</a>
+            </div>
+            <div ng-show="currentUser">
+              <a href="#">Profile</a>
+            </div>
+            <div ng-show="currentUser">
+              <a class="logout" ng-click="logout()">Logout</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>

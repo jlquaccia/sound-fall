@@ -11,9 +11,11 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
   <link rel="stylesheet" href="/libs/angular-material/angular-material.min.css">
   <!-- custom -->
+  <link rel="stylesheet" href="/css/general.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" href="/css/login.css">
   <link rel="stylesheet" href="/css/register.css">
+  <link rel="stylesheet" href="/css/navbar.css">
   <!-- js -->
   <!-- vendors -->
   <script src="/libs/jquery/dist/jquery.min.js"></script>
@@ -36,6 +38,7 @@
   <script src="/js/routes.js"></script>
 </head>
 <body>
+  <div ng-include="'partials/navbar.html'"></div>
   <div ui-view></div>
 </body>
 </html>

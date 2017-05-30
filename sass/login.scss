@@ -1,0 +1,14 @@
+#login {
+  .loginBtn {
+    color: rgba(255,133,10,1);
+    background-color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    transition: all .1s 0s ease-in-out;
+
+    &:hover {
+      background-color: rgba(158,157,156,1);
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,170 @@
+#navbar {
+  #header {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    line-height: 1em;
+    background-color: #fff;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: subpixel-antialiased;
+    position: relative;
+  }
+
+  #header #siteTitleWrapper,
+  #header #siteTitle {
+    width: 360px;
+  }
+
+  #header #logoWrapper,
+  #header #siteTitleWrapper,
+  #header #headerNav {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  #header #mainNavWrapper {
+    position: relative;
+    z-index: 1000;
+  }
+
+  .nav-wrapper {
+    position: relative;
+  }
+
+  .nav-wrapper nav > div {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+
+  .nav-wrapper nav > div > a,
+  .nav-wrapper nav > div .folder-toggle {
+    display: block;
+    padding: .75em 1em;
+    transition: color .1s 0s ease-in-out;
+  }
+
+  .nav-wrapper nav > div:last-child > a,
+  .nav-wrapper nav > div:last-child .folder-toggle {
+    padding-right: 0;
+  }
+
+  header {
+    display: block;
+  }
+
+  .header-inner {
+    padding: 20px 0;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+    animation: header-anim 1s ease-in-out;
+    margin: auto;
+  }
+
+  #header #siteTitle {
+    position: relative;
+    z-index: 1000;
+  }
+
+  #siteTitle,
+  #siteTitle a {
+    font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #ff850a;
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1em;
+  }
+
+  h1 {
+    color: #ff850a;
+    font-size: 2em;
+    margin: .67em 0;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-rendering: optimizeLegibility;
+  }
+
+  #siteTitle,
+  #siteTitle a {
+    font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  #header a {
+    text-decoration: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgba(125,125,125,.75);
+    background-color: transparent;
+  }
+
+  #header #headerNav {
+    text-align: right;
+  }
+
+  #header #logoWrapper,
+  #header #siteTitleWrapper,
+  #header #headerNav {
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  #headerNav {
+    white-space: nowrap;
+  }
+
+  #headerNav nav .active > a {
+    color: rgba(158,157,156,1);
+  }
+
+  #headerNav nav a {
+    font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1em;
+    color: #ff850a;
+  }
+
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  // Animations
+  /* ------------------------------------------------------------------------------------------------------------------------------- */
+  @keyframes header-anim {
+    0% {
+      opacity: 0;
+    }
+    
+    72% {
+      opacity: 0;
+    }
+    
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .logout {
+    cursor: pointer;
+  }
+}
