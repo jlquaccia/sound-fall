@@ -5,8 +5,7 @@ angular
 
     $locationProvider
       .html5Mode({
-        enabled: true,
-        requireBase: false
+        enabled: true
       });
 
     $stateProvider
@@ -14,6 +13,16 @@ angular
         url: '/',
         controller: 'HomeCtrl as home',
         templateUrl: '/views/home.html'
+      })
+      .state('profile', {
+        url: '/profile/:id',
+        controller: 'ProfileCtrl as profile',
+        templateUrl: '/views/profile.html'
+      })
+      .state('account', {
+        url: '/account/:id',
+        controller: 'AccountCtrl as account',
+        templateUrl: '/views/account.html'
       })
       // auth
       .state('login', {

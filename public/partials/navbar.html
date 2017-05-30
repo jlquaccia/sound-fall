@@ -19,7 +19,10 @@
               <a ui-sref="register">Register</a>
             </div>
             <div ng-show="currentUser">
-              <a href="#">Profile</a>
+              <a ui-sref="profile({id: currentUser.username})">Profile</a>
+            </div>
+            <div ng-show="currentUser">
+              <a ui-sref="account({id: currentUser.username})">Account</a>
             </div>
             <div ng-show="currentUser">
               <a class="logout" ng-click="logout()">Logout</a>
