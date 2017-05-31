@@ -1,2 +1,2 @@
-node_modules/* linguist-vendored
-public/libs/* linguist-vendored
+node_modules/* linguist-vendored=false
+public/libs/* linguist-vendored=false
