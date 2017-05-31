@@ -5,7 +5,8 @@
       var api = {
         register: register,
         login: login,
-        logout: logout
+        logout: logout,
+        deleteUser: deleteUser
       };
 
       return api;
@@ -20,6 +21,10 @@
 
       function login (user) {
         return $http.post('/api/login', user);
+      }
+
+      function deleteUser (userId) {
+        return $http.delete('/api/user/' + userId);
       }
     }]);
 })();

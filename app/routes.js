@@ -66,6 +66,28 @@ module.exports = function (app) {
     res.send(req.isAuthenticated() ? req.user : '0');
   });
 
+  app.delete('/api/user/:id', authorized, function (req, res) {
+    User
+      .removeUser(req.params.id)
+      .then(
+        function (response) {
+          console.log('user deleted');
+          res.json(response);
+        },
+        function (err) {
+          res.status(400).send(err);
+        }
+      );
+  });
+
+  function authorized (req, res, next) {
+    if (!req.isAuthenticated()) {
+      res.send(401);
+    } else {
+      next();
+    }
+  }
+
   // angular
   app.get('*', function (req, res) {
     res.sendfile('./public/index.html');
