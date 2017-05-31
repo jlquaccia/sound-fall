@@ -82,6 +82,12 @@
 
       .post {
         margin-bottom: 20px;
+
+        .dateOfPost {
+          color: rgba(158,157,156,1);
+          margin-bottom: 5px;
+          font-size: 12px;
+        }
       }
 
       .postImage {
