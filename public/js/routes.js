@@ -42,7 +42,7 @@ angular
     $urlRouterProvider
       .otherwise('/');
   }])
-  .run(['$q', '$http', '$rootScope', function ($q, $http, $rootScope) {
+  .run(['$q', '$http', '$rootScope', '$state', function ($q, $http, $rootScope, $state) {
     var deferred = $q.defer();
 
     $http.get('/api/loggedin')
@@ -57,8 +57,9 @@ angular
             deferred.resolve();
           } else {
             // User is not Authenticated
-            deferred.reject();
             console.log('user is not logged in');
+            $state.go('login');
+            deferred.reject();
           }
         },
         function (err) {

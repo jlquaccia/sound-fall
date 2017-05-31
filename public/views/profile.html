@@ -1,9 +1,30 @@
 <div id="profile">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>{{test}}</h1>
+  <header>
+    <div class="container-fluid noPads">
+      <div class="row">
+        <div class="col-md-12">
+          <img src="/images/cassettes.jpg" alt="Cassettes" class="img-responsive userCoverBg">
+        </div>
       </div>
     </div>
-  </div>
+  </header>
+  <section class="profile">
+    <div class="container-fluid noPads">
+      <div class="row">
+        <div class="col-md-12">
+          <img src="/images/me_hoodie_bAndW.png" alt="Username" class="userAvatar img-responsive">
+          <div class="userInfoWrapper">
+            <div class="username">{{currentUser.username}}</div>
+            <ul class="counts">
+              <li><b>181</b> sounds</li>
+              <li><b>299</b> followers</li>
+              <li><b>388</b> following</li>
+            </ul>
+            <p class="userBio">Jason Quaccia chasing colors through my fears jasonquaccia.com</p>
+          </div>
+          <button class="newPostBtn" ng-click="">New Sound</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

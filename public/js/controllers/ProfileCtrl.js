@@ -1,7 +1,7 @@
 (function () {
   angular
     .module('sound_fall')
-    .controller('ProfileCtrl', ['$scope', function ($scope) {
-      $scope.test = 'Profile';
+    .controller('ProfileCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
+      
     }]);
 })();

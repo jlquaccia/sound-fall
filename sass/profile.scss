@@ -1,0 +1,74 @@
+#profile {
+  header {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    .userCoverBg {
+      width: 100%;
+    }
+
+    .noPads {
+      padding: 0;
+    }
+  }
+
+  section.profile {
+    position: relative;
+    top: 300px;
+    background-color: #FFF;
+    color: rgba(255,133,10,1);
+
+    .userAvatar {
+      width: 152px;
+      float: left;
+    }
+
+    .userInfoWrapper {
+      width: 600px;
+      position: absolute;
+      bottom: 0;
+      left: 200px;
+      font-size: 15px;
+
+      .username {
+        font-size: 40px;
+        font-weight: 200;
+      }
+
+      .counts {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: inline-block;
+          margin: 0 10px;
+
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    /* ------------------------------------------------------------------------------------------------------------------------------- */
+    // New Sound Button
+    /* ------------------------------------------------------------------------------------------------------------------------------- */
+    .newPostBtn {
+      color: #FFF;
+      background-color: rgba(255,133,10,1);
+      border: none;
+      padding: 10px 20px;
+      transition: all .1s 0s ease-in-out;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+
+      &:hover {
+        background-color: rgba(158,157,156,1);
+        color: #fff;
+      }
+    }
+  }
+}
