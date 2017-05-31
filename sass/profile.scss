@@ -3,6 +3,7 @@
     position: absolute;
     left: 0;
     right: 0;
+    overflow-x: hidden;
 
     .userCoverBg {
       width: 100%;
@@ -18,9 +19,14 @@
     top: 300px;
     background-color: #FFF;
     color: rgba(255,133,10,1);
+    padding: 20px 0;
+
+    hr.gray {
+      border-top: 2px solid #e6e5e4;
+    }
 
     .userAvatar {
-      width: 152px;
+      width: 160px;
       float: left;
     }
 
@@ -68,6 +74,51 @@
       &:hover {
         background-color: rgba(158,157,156,1);
         color: #fff;
+      }
+    }
+
+    .feed {
+      padding-top: 20px;
+
+      .post {
+        margin-bottom: 20px;
+      }
+
+      .postImage {
+        float: left;
+      }
+
+      .postTextWrapper {
+        position: absolute;
+        left: 200px;
+
+        .ctas,
+        .tags {
+          list-style-type: none;
+          margin: 10px 0;
+          padding: 0;
+
+          li {
+            display: inline-block;
+            margin: 0 1px;
+
+            &:first-of-type {
+              margin-left: 0;
+            }
+          }
+        }
+
+        .artistName {
+            font-size: 15px;
+        }
+
+        .tags {
+          li {
+            padding: 2px 5px;
+            background-color: #9e9d9c;
+            color: #fff;
+          }
+        }
       }
     }
   }
