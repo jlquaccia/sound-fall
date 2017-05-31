@@ -6,7 +6,8 @@
         register: register,
         login: login,
         logout: logout,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        updateUser: updateUser
       };
 
       return api;
@@ -25,6 +26,10 @@
 
       function deleteUser (userId) {
         return $http.delete('/api/user/' + userId);
+      }
+
+      function updateUser (userId, user) {
+        return $http.put('/api/user/' + userId, user);
       }
     }]);
 })();

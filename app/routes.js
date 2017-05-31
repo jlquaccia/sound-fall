@@ -80,6 +80,22 @@ module.exports = function (app) {
       );
   });
 
+  app.put('/api/user/:id', authorized, function (req, res) {
+    var newUser = req.body;
+
+    User
+      .updateUser(req.params.id, newUser)
+      .then(
+        function (user) {
+          console.log('user: ', user);
+          res.json(user);
+        },
+        function (err) {
+          res.status(400).send(err);
+        }
+      );
+  });
+
   function authorized (req, res, next) {
     if (!req.isAuthenticated()) {
       res.send(401);

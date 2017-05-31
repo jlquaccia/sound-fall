@@ -13,7 +13,8 @@ module.exports = function () {
     createUser: createUser,
     findUserById: findUserById,
     findUserByCredentials: findUserByCredentials,
-    removeUser: removeUser
+    removeUser: removeUser,
+    updateUser: updateUser
   };
 
   return api;
@@ -36,5 +37,9 @@ module.exports = function () {
 
   function removeUser (userId) {
     return UserModel.remove({_id: userId});
+  }
+
+  function updateUser (userId, user) {
+    return UserModel.update({_id: userId}, {$set: user});
   }
 };
