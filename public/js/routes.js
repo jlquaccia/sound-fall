@@ -22,7 +22,10 @@ angular
       .state('account', {
         url: '/account/:id',
         controller: 'AccountCtrl as account',
-        templateUrl: '/views/account.html'
+        templateUrl: '/views/account.html',
+        resolve: {
+          checkUsername: checkUsername
+        }
       })
       // auth
       .state('login', {
@@ -66,3 +69,44 @@ angular
 
       return deferred.promise;
   }]);
+
+function checkUsername ($q, $http, $rootScope, $stateParams, $state, $mdToast) {
+  var deferred = $q.defer();
+
+  $http.get('/api/loggedin')
+    .then(
+      function (user) {
+        $rootScope.errorMessage = null;
+
+        var errorMsg = $mdToast.simple()
+          .content('Access denied.')
+          .hideDelay(3000);
+
+        if (user.data !== '0') {
+          $rootScope.currentUser = user.data;
+
+          if ($rootScope.currentUser.username === $stateParams.id) {
+            console.log('access granted');
+            deferred.resolve();
+          } else {
+            console.log('access denied');
+
+            $mdToast.show(errorMsg);
+            $state.go('home');
+            deferred.reject();
+          }
+        } else {
+          console.log("you're not logged in");
+          $mdToast.show(errorMsg);
+          $state.go('home');
+          deferred.reject();
+        }
+      },
+      function (err) {
+        console.log(err);
+        deferred.reject();
+      }
+    );
+
+    return deferred.promise;
+}
