@@ -37,13 +37,39 @@ angular
         url: '/register',
         controller: 'AuthCtrl as auth',
         templateUrl: 'views/auth/register.html'
+      })
+      // admin
+      .state('admin', {
+        url: '/admin',
+        controller: 'AdminCtrl as admin',
+        templateUrl: 'views/admin.html'
       });
 
     $urlRouterProvider
       .otherwise('/');
   }])
-  .run(['$q', '$http', '$rootScope', '$state', function ($q, $http, $rootScope, $state) {
+  .run(['$q', '$http', '$rootScope', '$mdToast', '$state', 'Auth', function ($q, $http, $rootScope, $mdToast, $state, Auth) {
     var deferred = $q.defer();
+
+    $rootScope.logout = function () {
+      Auth
+        .logout()
+        .then(
+          function (response) {
+            $rootScope.currentUser = null;
+            // success flash message
+            var successMsg = $mdToast.simple()
+              .content('You are now logged out.')
+              .hideDelay(3000);
+
+            $mdToast.show(successMsg);
+            $state.go('login');
+          },
+          function (err) {
+            console.log(err);
+          }
+        );
+    };
 
     $http.get('/api/loggedin')
       .then(
@@ -110,4 +136,24 @@ function checkUsername ($q, $http, $rootScope, $stateParams, $state, $mdToast) {
     );
 
     return deferred.promise;
+}
+
+function logout (Auth) {
+  Auth
+    .logout()
+    .then(
+      function (response) {
+        $rootScope.currentUser = null;
+        // success flash message
+        var successMsg = $mdToast.simple()
+          .content('You are now logged out.')
+          .hideDelay(3000);
+
+        $mdToast.show(successMsg);
+        $state.go('login');
+      },
+      function (err) {
+        console.log(err);
+      }
+    );
 }

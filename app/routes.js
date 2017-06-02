@@ -12,6 +12,7 @@ module.exports = function (app) {
   passport.serializeUser(passportApi.serializeUser);
   passport.deserializeUser(passportApi.deserializeUser);
 
+  // register a new user
   app.post('/api/register', function (req, res) {
     var newUser = req.body;
 
@@ -51,21 +52,25 @@ module.exports = function (app) {
       );
   });
 
+  // login a user
   app.post('/api/login', passport.authenticate('local'), function (req, res) {
     var user = req.user;
 
     res.json(user);
   });
 
+  // logout a user
   app.post('/api/logout', function (req, res) {
     req.logOut();
     res.send(200);
   });
 
+  // check if a user is logged in or not
   app.get('/api/loggedin', function (req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
   });
 
+  // delete a user
   app.delete('/api/user/:id', authorized, function (req, res) {
     User
       .removeUser(req.params.id)
@@ -80,6 +85,7 @@ module.exports = function (app) {
       );
   });
 
+  // update a user
   app.put('/api/user/:id', authorized, function (req, res) {
     var newUser = req.body;
 
@@ -96,6 +102,22 @@ module.exports = function (app) {
       );
   });
 
+  // get all users
+  app.get('/api/users', function (req, res) {
+    User
+      .getAllUsers()
+      .then(
+        function (users) {
+          res.json(users);
+        },
+        function (err) {
+          console.log('error: ', err);
+          res.status(500).send(err);
+        }
+      );
+  });
+
+  // check if a user is authenticated
   function authorized (req, res, next) {
     if (!req.isAuthenticated()) {
       res.send(401);

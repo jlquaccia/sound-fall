@@ -7,7 +7,8 @@
         login: login,
         logout: logout,
         deleteUser: deleteUser,
-        updateUser: updateUser
+        updateUser: updateUser,
+        getAllUsers: getAllUsers
       };
 
       return api;
@@ -30,6 +31,10 @@
 
       function updateUser (userId, user) {
         return $http.put('/api/user/' + userId, user);
+      }
+
+      function getAllUsers () {
+        return $http.get('/api/users');
       }
     }]);
 })();

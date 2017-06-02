@@ -14,7 +14,8 @@ module.exports = function () {
     findUserById: findUserById,
     findUserByCredentials: findUserByCredentials,
     removeUser: removeUser,
-    updateUser: updateUser
+    updateUser: updateUser,
+    getAllUsers: getAllUsers
   };
 
   return api;
@@ -41,5 +42,9 @@ module.exports = function () {
 
   function updateUser (userId, user) {
     return UserModel.update({_id: userId}, {$set: user});
+  }
+
+  function getAllUsers () {
+    return UserModel.find({});
   }
 };
