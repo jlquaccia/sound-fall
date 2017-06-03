@@ -8,7 +8,8 @@
         logout: logout,
         deleteUser: deleteUser,
         updateUser: updateUser,
-        getAllUsers: getAllUsers
+        getAllUsers: getAllUsers,
+        followUser: followUser
       };
 
       return api;
@@ -35,6 +36,10 @@
 
       function getAllUsers () {
         return $http.get('/api/users');
+      }
+
+      function followUser (user, currentUserId) {
+        return $http.post('/api/followUser/' + currentUserId, user);
       }
     }]);
 })();

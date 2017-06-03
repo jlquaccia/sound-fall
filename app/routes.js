@@ -117,6 +117,23 @@ module.exports = function (app) {
       );
   });
 
+  // follower another user
+  app.post('/api/followUser/:currentUserId', function (req, res) {
+    // console.log('req.body.username: ', req.body.username);
+    // console.log('currentUserId: ', req.params.currentUserId);
+    User
+      .followUser(req.params.currentUserId, req.body.username)
+      .then(
+        function (user) {
+          res.json(user);
+        },
+        function (err) {
+          console.log('error: ', error);
+          res.status(500).send(err);
+        }
+      );
+  });
+
   // check if a user is authenticated
   function authorized (req, res, next) {
     if (!req.isAuthenticated()) {

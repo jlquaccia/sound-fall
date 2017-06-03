@@ -3,7 +3,9 @@ var mongoose = require('mongoose');
 module.exports = function () {
   var UserSchema = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    followers: [{type: String}],
+    following: [{type: String}]
   }, {collection: 'user'});
 
   var UserModel = mongoose.model('UserModel', UserSchema);
@@ -15,7 +17,8 @@ module.exports = function () {
     findUserByCredentials: findUserByCredentials,
     removeUser: removeUser,
     updateUser: updateUser,
-    getAllUsers: getAllUsers
+    getAllUsers: getAllUsers,
+    followUser: followUser
   };
 
   return api;
@@ -46,5 +49,9 @@ module.exports = function () {
 
   function getAllUsers () {
     return UserModel.find({});
+  }
+
+  function followUser (currentUserId, username) {
+    return UserModel.update({_id: currentUserId}, {$push: {following: username}});
   }
 };

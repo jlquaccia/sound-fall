@@ -1,6 +1,15 @@
-<h1>Users</h1>
-<ul>
-  <li ng-repeat="user in users">
-    username: {{user.username}} <br> password: {{user.password}}
-  </li>
-</ul>
+<div id="admin">
+  <h1>Current User:</h1>
+  <ul>
+    <li>username: {{currentUser.username}} <br> password: {{currentUser.password}}</li>
+  </ul>
+  <h1>All Users</h1>
+  <ul>
+    <li ng-repeat="user in users">
+      username: {{user.username}}<br>
+      password: {{user.password}}<br>
+      <a class="followLink" ng-click="follow(user, currentUser)">Follow</a>
+      {{user}}
+    </li>
+  </ul>
+</div>
