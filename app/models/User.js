@@ -52,6 +52,6 @@ module.exports = function () {
   }
 
   function followUser (currentUserId, username) {
-    return UserModel.update({_id: currentUserId}, {$push: {following: username}});
+    return UserModel.update({_id: currentUserId}, {$addToSet: {following: username}});
   }
 };
