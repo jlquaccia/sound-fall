@@ -122,13 +122,29 @@ module.exports = function (app) {
     // console.log('req.body.username: ', req.body.username);
     // console.log('currentUserId: ', req.params.currentUserId);
     User
-      .followUser(req.params.currentUserId, req.body.username)
+      .findUserById(req.params.currentUserId)
       .then(
         function (user) {
-          res.json(user);
+          // don't let the current user follow themselves
+          if (user.username === req.body.username) {
+            console.log('a user cannot follow themself');
+            return;
+          }
+
+          User
+            .followUser(req.params.currentUserId, req.body.username)
+            .then(
+              function (user) {
+                res.json(user);
+              },
+              function (err) {
+                console.log('error: ', error);
+                res.status(500).send(err);
+              }
+            );
         },
         function (err) {
-          console.log('error: ', error);
+          console.log('error: ', err);
           res.status(500).send(err);
         }
       );

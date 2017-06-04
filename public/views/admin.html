@@ -8,7 +8,12 @@
     <li ng-repeat="user in users">
       username: {{user.username}}<br>
       password: {{user.password}}<br>
-      <a class="followLink" ng-click="follow(user, currentUser)">Follow</a>
+      <div ng-show="currentUser.following.indexOf(user.username) === -1">
+        <a class="followLink" ng-click="follow(user, currentUser)">Follow</a>
+      </div>
+      <div ng-hide="currentUser.following.indexOf(user.username) === -1">
+        <a class="unfollowLink" ng-click="unfollow(user, currentUser)">Unfollow</a>
+      </div>
       {{user}}
     </li>
   </ul>
