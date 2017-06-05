@@ -23,8 +23,13 @@
         //   return;
         // }
 
+        var usersObj = {
+          user: user,
+          currentUser: currentUser
+        };
+
         Auth
-          .followUser(user, currentUser._id)
+          .followUser(usersObj, currentUser._id)
           .then(
             function (response) {
               console.log(response);

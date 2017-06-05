@@ -117,28 +117,49 @@ module.exports = function (app) {
       );
   });
 
-  // follower another user
+  // follow another user
   app.post('/api/followUser/:currentUserId', function (req, res) {
-    // console.log('req.body.username: ', req.body.username);
-    // console.log('currentUserId: ', req.params.currentUserId);
+    // console.log('req.body: ', req.body);
+
+    // don't let the current user follow themselves
+    if (req.body.currentUser.username === req.body.user.username) {
+      console.log('a user cannot follow themself');
+      return;
+    }
+
     User
       .findUserById(req.params.currentUserId)
       .then(
         function (user) {
-          // don't let the current user follow themselves
-          if (user.username === req.body.username) {
-            console.log('a user cannot follow themself');
-            return;
-          }
-
           User
-            .followUser(req.params.currentUserId, req.body.username)
+            .followUser(req.params.currentUserId, req.body.user.username)
             .then(
-              function (user) {
-                res.json(user);
+              function (response) {
+                console.log('response: ', response);
               },
               function (err) {
                 console.log('error: ', error);
+                res.status(500).send(err);
+              }
+            );
+        },
+        function (err) {
+          console.log('error: ', err);
+          res.status(500).send(err);
+        }
+      )
+      .then(
+        function () {
+          User
+            .addAsFollower(req.body.currentUser, req.body.user._id)
+            .then(
+              function (response) {
+                console.log('response: ', response);
+                console.log('added ' + req.body.currentUser.username + ' to ' + req.body.user.username + '\'s followers list');
+                res.json(response);
+              },
+              function (err) {
+                console.log('error: ', err);
                 res.status(500).send(err);
               }
             );

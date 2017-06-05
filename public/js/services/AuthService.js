@@ -39,8 +39,8 @@
         return $http.get('/api/users');
       }
 
-      function followUser (user, currentUserId) {
-        return $http.post('/api/followUser/' + currentUserId, user);
+      function followUser (usersObj, currentUserId) {
+        return $http.post('/api/followUser/' + currentUserId, usersObj);
       }
 
       function unfollowUser (user, currentUserId) {
