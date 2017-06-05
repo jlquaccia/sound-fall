@@ -5,19 +5,16 @@
   </ul>
   <h1>All Users</h1>
   <ul>
-    <li ng-repeat="user in users">
-      <!-- don't show the current user -->
-      <div ng-hide="currentUser.username === user.username">
-        currentUser: {{currentUser}}<br>
-        user: {{user}}<br>
-        username: {{user.username}}<br>
-        password: {{user.password}}<br>
-        <div ng-show="currentUser.following.indexOf(user.username) === -1">
-          <a class="followLink" ng-click="follow(user, currentUser)">Follow</a>
-        </div>
-        <div ng-hide="currentUser.following.indexOf(user.username) === -1">
-          <a class="unfollowLink" ng-click="unfollow(user, currentUser)">Unfollow</a>
-        </div>
+    <!-- don't show the current user -->
+    <li ng-repeat="user in users" ng-if="currentUser.username !== user.username">
+      user: {{user}}<br>
+      username: {{user.username}}<br>
+      password: {{user.password}}<br>
+      <div ng-show="currentUser.following.indexOf(user.username) === -1">
+        <a class="followLink" ng-click="follow(user, currentUser)">Follow</a>
+      </div>
+      <div ng-hide="currentUser.following.indexOf(user.username) === -1">
+        <a class="unfollowLink" ng-click="unfollow(user, currentUser)">Unfollow</a>
       </div>
     </li>
   </ul>
