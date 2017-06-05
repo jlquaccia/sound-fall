@@ -22,7 +22,7 @@
             </ul>
             <p class="userBio">Jason Quaccia chasing colors through my fears jasonquaccia.com</p>
           </div>
-          <button class="newPostBtn" ng-click="">New Sound</button>
+          <button id="openOverlay" class="newPostBtn" ng-click="overlayOpen = !overlayOpen">New Sound</button>
           <div style="clear: both;"></div>
         </div>
       </div>
@@ -104,4 +104,31 @@
       </div>
     </div>
   </section>
+  <!--  overlay  -->
+  <div class="overlay overlay-slidedown" ng-class="{'open': overlayOpen}">
+    <button type="button" class="overlay-close" ng-click="overlayOpen = !overlayOpen">Close</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <h1 class="text-center">New Sound</h1>
+          <div ng-show="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+          <form ng-submit="createPost(post)">
+            <div class="form-group">
+              <label>Title:</label>
+              <input type="text" class="form-control" name="title" ng-model="post.title">
+            </div>
+            <div class="form-group">
+              <label>Artist:</label>
+              <input type="text" class="form-control" name="artist" ng-model="post.artist">
+            </div>
+            <div class="form-group">
+              <label>Tags:</label>
+              <input type="text" class="form-control" name="tags" ng-model="post.tags" placeholder="press enter to submit a tag">
+            </div>
+            <button class="createPostBtn" type="submit">Post</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
