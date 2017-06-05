@@ -174,11 +174,31 @@ module.exports = function (app) {
   // unfollow another user
   app.post('/api/unfollowUser/:currentUserId', function (req, res) {
     User
-      .unfollowUser(req.params.currentUserId, req.body.username)
+      .unfollowUser(req.params.currentUserId, req.body.user.username)
       .then(
         function (response) {
           console.log('response: ', response);
-          res.json(response);
+        },
+        function (err) {
+          console.log('error: ', error);
+          res.status(500).send(err);
+        }
+      )
+      .then(
+        function () {
+          User
+            .removeFromFollowers(req.body.currentUser, req.body.user._id)
+            .then(
+              function (response) {
+                console.log('response: ', response);
+                console.log('removed ' + req.body.currentUser.username + ' from ' + req.body.user.username + '\'s followers list');
+                res.json(response);
+              },
+              function (err) {
+                console.log('error: ', error);
+                res.status(500).send(err);
+              }
+            );
         },
         function (err) {
           console.log('error: ', error);

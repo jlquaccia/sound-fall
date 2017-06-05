@@ -32,7 +32,7 @@
           .followUser(usersObj, currentUser._id)
           .then(
             function (response) {
-              console.log(response);
+              // console.log(response);
               currentUser.following.push(user.username);
 
               var successMsg = $mdToast.simple()
@@ -41,7 +41,7 @@
 
               $mdToast.show(successMsg);
               $scope.init();
-              console.log(currentUser);
+              // console.log(currentUser);
             },
             function (err) {
               console.error(err);
@@ -55,11 +55,16 @@
         //   return;
         // }
 
+        var usersObj = {
+          user: user,
+          currentUser: currentUser
+        };
+
         Auth
-          .unfollowUser(user, currentUser._id)
+          .unfollowUser(usersObj, currentUser._id)
           .then(
             function (response) {
-              console.log(response);
+              // console.log(response);
 
               var userToGetRidOf = currentUser.following.indexOf(user.username);
 
@@ -71,7 +76,7 @@
 
               $mdToast.show(successMsg);
               $scope.init();
-              console.log(currentUser);
+              // console.log(currentUser);
             },
             function (err) {
               console.error(err);

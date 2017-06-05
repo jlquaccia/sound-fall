@@ -66,7 +66,7 @@ module.exports = function () {
     return UserModel.update({_id: userId}, {$addToSet: {followers: currentUser.username}});
   }
 
-  function removeFromFollowers (currentUser, username) {
-    return;
+  function removeFromFollowers (currentUser, userId) {
+    return UserModel.update({_id: userId}, {$pull: {followers: currentUser.username}});
   }
 };

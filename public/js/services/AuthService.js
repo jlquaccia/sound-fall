@@ -43,8 +43,8 @@
         return $http.post('/api/followUser/' + currentUserId, usersObj);
       }
 
-      function unfollowUser (user, currentUserId) {
-        return $http.post('/api/unfollowUser/' + currentUserId, user);
+      function unfollowUser (usersObj, currentUserId) {
+        return $http.post('/api/unfollowUser/' + currentUserId, usersObj);
       }
     }]);
 })();
