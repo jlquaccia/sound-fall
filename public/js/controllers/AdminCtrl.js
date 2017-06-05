@@ -18,10 +18,10 @@
       $scope.init();
 
       $scope.follow = function (user, currentUser) {
-        if (currentUser.following.indexOf(user.username) !== -1) {
-          console.log('already following this user');
-          return;
-        }
+        // if (currentUser.following.indexOf(user.username) !== -1) {
+        //   console.log('already following this user');
+        //   return;
+        // }
 
         Auth
           .followUser(user, currentUser._id)
@@ -32,6 +32,36 @@
 
               var successMsg = $mdToast.simple()
                 .content('You are now following ' + user.username)
+                .hideDelay(3000);
+
+              $mdToast.show(successMsg);
+              $scope.init();
+              console.log(currentUser);
+            },
+            function (err) {
+              console.error(err);
+            }
+          );
+      };
+
+      $scope.unfollow = function (user, currentUser) {
+        // if (currentUser.following.indexOf(user.username) === -1) {
+        //   console.log('you are not following this user');
+        //   return;
+        // }
+
+        Auth
+          .unfollowUser(user, currentUser._id)
+          .then(
+            function (response) {
+              console.log(response);
+
+              var userToGetRidOf = currentUser.following.indexOf(user.username);
+
+              currentUser.following.splice(userToGetRidOf, 1);
+
+              var successMsg = $mdToast.simple()
+                .content('You have unfollowed ' + user.username)
                 .hideDelay(3000);
 
               $mdToast.show(successMsg);

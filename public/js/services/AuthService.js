@@ -9,7 +9,8 @@
         deleteUser: deleteUser,
         updateUser: updateUser,
         getAllUsers: getAllUsers,
-        followUser: followUser
+        followUser: followUser,
+        unfollowUser: unfollowUser
       };
 
       return api;
@@ -40,6 +41,10 @@
 
       function followUser (user, currentUserId) {
         return $http.post('/api/followUser/' + currentUserId, user);
+      }
+
+      function unfollowUser (user, currentUserId) {
+        return $http.post('/api/unfollowUser/' + currentUserId, user);
       }
     }]);
 })();

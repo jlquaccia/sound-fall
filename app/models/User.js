@@ -18,7 +18,8 @@ module.exports = function () {
     removeUser: removeUser,
     updateUser: updateUser,
     getAllUsers: getAllUsers,
-    followUser: followUser
+    followUser: followUser,
+    unfollowUser: unfollowUser
   };
 
   return api;
@@ -53,5 +54,9 @@ module.exports = function () {
 
   function followUser (currentUserId, username) {
     return UserModel.update({_id: currentUserId}, {$addToSet: {following: username}});
+  }
+
+  function unfollowUser (currentUserId, username) {
+    return UserModel.update({_id: currentUserId}, {$pull: {following: username}});
   }
 };

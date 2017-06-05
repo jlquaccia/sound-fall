@@ -150,6 +150,22 @@ module.exports = function (app) {
       );
   });
 
+  // unfollow another user
+  app.post('/api/unfollowUser/:currentUserId', function (req, res) {
+    User
+      .unfollowUser(req.params.currentUserId, req.body.username)
+      .then(
+        function (response) {
+          console.log('response: ', response);
+          res.json(response);
+        },
+        function (err) {
+          console.log('error: ', error);
+          res.status(500).send(err);
+        }
+      );
+  });
+
   // check if a user is authenticated
   function authorized (req, res, next) {
     if (!req.isAuthenticated()) {
