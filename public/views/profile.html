@@ -123,10 +123,14 @@
             </div>
             <div class="form-group">
               <label>Tags:</label>
-              <input type="text" class="form-control" name="tags" ng-model="post.tags" placeholder="press enter to submit a tag">
+              <input type="text" class="form-control tagsInput" name="tags" placeholder="press enter to submit a tag" ng-keyup="$event.keyCode == 13 ? addTag() : null">
             </div>
+            <ul class="submittedTags">
+              <li ng-repeat="tag in post.tags">{{tag}} &times;</li>
+            </ul>
             <button class="createPostBtn" type="submit">Post</button>
           </form>
+          post: {{post}}
         </div>
       </div>
     </div>
